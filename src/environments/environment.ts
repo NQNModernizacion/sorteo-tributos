@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrlProd: 'https://weblogin.muninqn.gov.ar/apps/sorteo-bc-api',
+  apiUrlDev: 'http://localhost:49815',
+  // apiUrlDev: 'http://www.muninqn.gov.ar:90/apps/sorteo-bc-api',
 };
 
 /*
