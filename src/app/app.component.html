@@ -16,7 +16,7 @@
 
                 <div class="form-group">
                     <label for="inputImp">Identificación Impuesto</label>
-                    <input #idImpuesto formControlName="identificacion" [maxlength]="idImpuestoMaxLength" class="form-control"
+                    <input #idImpuesto formControlName="identificacion" [placeholder]="idImpuestoPlaceHolder" [maxlength]="idImpuestoMaxLength" class="form-control"
                         id="inputImp" aria-describedby="emailHelp">
                     <small *ngIf="identificacionInvalid" id="emailHelp" class="text-danger">La Identificación es obligatoria </small>
                 </div>

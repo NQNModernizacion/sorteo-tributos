@@ -21,6 +21,7 @@ export class AppComponent {
 
   impuesto!: Impuesto;
   idImpuestoMaxLength: number = 100;
+  idImpuestoPlaceHolder: string = '';
 
   mensaje: string = '';
   numero: number = 0;
@@ -80,26 +81,31 @@ export class AppComponent {
 
   }
 
-  aplicarMascara(tipoImp: any) {
+  aplicarMascara(tipoImp: string) {
 
     let validator = Validators.maxLength(100);
+    this.idImpuestoPlaceHolder = '';
 
     switch (true) {
       case tipoImp == 'INM':
         validator = Validators.maxLength(7);
         this.idImpuestoMaxLength = 7;
+        this.idImpuestoPlaceHolder = 'Ejemplo "0000000" (7 números)';
         break;
       case tipoImp == 'ROD':
         validator = Validators.maxLength(10);
         this.idImpuestoMaxLength = 10;
+        this.idImpuestoPlaceHolder = 'Ejemplo "xx-xxx-xx" (guiones opcionales)';
         break;
       case tipoImp == 'CEC':
         validator = Validators.maxLength(10);
         this.idImpuestoMaxLength = 10;
+        this.idImpuestoPlaceHolder = 'Ejemplo "00000000-0" (guion opcional)';
         break;
       case tipoImp == 'COM':
         validator = Validators.maxLength(6);
         this.idImpuestoMaxLength = 6;
+        this.idImpuestoPlaceHolder = 'Ejemplo "000000" (6 números)';
         break;
       
     }
