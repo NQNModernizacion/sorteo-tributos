@@ -22,6 +22,7 @@ export class AppComponent {
   impuesto!: Impuesto;
   idImpuestoMaxLength: number = 100;
   idImpuestoPlaceHolder: string = '';
+  isLoading: boolean = false;
 
   mensaje: string = '';
   numero: number = 0;
@@ -44,6 +45,7 @@ export class AppComponent {
     }
     else {
 
+      this.isLoading = true;
       this.impuesto = new Impuesto();
 
       this.impuesto.tipoImpuesto = this.form.controls['tipoImpuesto'].value;
@@ -56,21 +58,46 @@ export class AppComponent {
         this.impuesto.identificacion = this.impuesto.identificacion.toUpperCase();
       
 
-      this.sorteoService.getNumero(this.impuesto).subscribe( (resp: any) => {
+      this.sorteoService.getNumero(this.impuesto).subscribe({
+        next: (resp: any) => {
+          if (resp > 0) {
+            this.numero = resp;
+            this.mensaje = `Tu número de sorteo es ${resp}`;
+          }
+          else {
+            this.mensaje = `No estas participando del sorteo. 
+                            Si regularizaste tu tributo con nuestro municipio hasta el 27 de marzo , 
+                            volvé a ingresar en las próximas 72hs para obtener tu número de sorteo. 
+                            ¡Gracias por participar!`;
+          }
 
-        if(resp > 0) {
-          this.numero = resp;
-          this.mensaje = `Tu número es ${resp}`;
-        }
-        else {
-          this.mensaje = `No estas participando del sorteo. 
-                          Si regularizaste tu tributo con nuestro municipio hasta el 27 de marzo , 
-                          volvé a ingresar en las próximas 72hs para obtener tu número de sorteo. 
-                          ¡Gracias por participar!`;
-        }
-      }, err => {
-        this.mensaje = 'Error en el servidor';
+          this.isLoading = false;
+        },
+        error: err => {
+          this.mensaje = 'Error en el servidor';
+          this.isLoading = false;
+        }, 
+        complete: () => this.isLoading = false
       })
+
+
+      // this.sorteoService.getNumero(this.impuesto).subscribe( (resp: any) => {
+
+      //   this.isLoading = true;
+
+      //   if(resp > 0) {
+      //     this.numero = resp;
+      //     this.mensaje = `Tu número de sorteo es ${resp}`;
+      //   }
+      //   else {
+      //     this.mensaje = `No estas participando del sorteo. 
+      //                     Si regularizaste tu tributo con nuestro municipio hasta el 27 de marzo , 
+      //                     volvé a ingresar en las próximas 72hs para obtener tu número de sorteo. 
+      //                     ¡Gracias por participar!`;
+      //   }
+      // }, err => {
+      //   this.mensaje = 'Error en el servidor';
+      // })
 
     }
 
@@ -85,11 +112,13 @@ export class AppComponent {
 
   }
 
+  // se dispara en el evento change de Tipo de tributo
   aplicarMascara(tipoImp: string) {
 
     let validator = Validators.maxLength(100);
     this.idImpuestoPlaceHolder = '';
     this.form.controls['identificacion'].reset();
+    this.mensaje = '';
 
     switch (true) {
       case tipoImp == 'INM':

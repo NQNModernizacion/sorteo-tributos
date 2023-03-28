@@ -21,7 +21,12 @@
                     <small *ngIf="identificacionInvalid" id="emailHelp" class="text-danger">La Identificación es obligatoria </small>
                 </div>
                 
-                <button type="submit" class="btn btn-primary float-right">Consultar</button>
+                <button *ngIf="!isLoading" type="submit" class="btn btn-primary float-right">Consultar</button>
+
+                <!-- spinner -->
+                <div *ngIf="isLoading" class="spinner-border text-secondary float-right" role="status">
+                    <span class="sr-only">Cargando...</span>
+                </div>
             </form>
 
         </div>
