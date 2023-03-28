@@ -52,6 +52,10 @@ export class AppComponent {
       // Quito espacios en blanco
       this.impuesto.identificacion = this.impuesto.identificacion.replace(/\s/g, '');
 
+      if (this.impuesto.tipoImpuesto == 'ROD')
+        this.impuesto.identificacion = this.impuesto.identificacion.toUpperCase();
+      
+
       this.sorteoService.getNumero(this.impuesto).subscribe( (resp: any) => {
 
         if(resp > 0) {
@@ -85,6 +89,7 @@ export class AppComponent {
 
     let validator = Validators.maxLength(100);
     this.idImpuestoPlaceHolder = '';
+    this.form.controls['identificacion'].reset();
 
     switch (true) {
       case tipoImp == 'INM':

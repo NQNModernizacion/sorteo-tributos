@@ -5,7 +5,7 @@
             <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
                 <div class="form-group">
-                    <label for="exampleFormControlFile1">Tipo de Impuesto</label>
+                    <label for="exampleFormControlFile1">Tipo De Tributo</label>
                     <select #tipoImp formControlName="tipoImpuesto" (change)="aplicarMascara(tipoImp.value)" [class.is-invalid]="tipoInpuestoInvalid"
                         class="form-control">
                         <option value="">Seleccionar</option>
@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="inputImp">Identificación Impuesto</label>
+                    <label for="inputImp">Identificación Del Tributo</label>
                     <input #idImpuesto formControlName="identificacion" [placeholder]="idImpuestoPlaceHolder" [maxlength]="idImpuestoMaxLength" class="form-control"
                         id="inputImp" aria-describedby="emailHelp">
                     <small *ngIf="identificacionInvalid" id="emailHelp" class="text-danger">La Identificación es obligatoria </small>
