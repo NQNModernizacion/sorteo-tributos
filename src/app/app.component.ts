@@ -67,7 +67,7 @@ export class AppComponent {
           else {
             this.mensaje = `No estas participando del sorteo. 
                             Si regularizaste tu tributo con nuestro municipio hasta el 27 de marzo , 
-                            volvé a ingresar en las próximas 72hs para obtener tu número de sorteo. 
+                            volvé a ingresar en las próximas horas para obtener tu número de sorteo. 
                             ¡Gracias por participar!`;
           }
 
@@ -79,26 +79,6 @@ export class AppComponent {
         }, 
         complete: () => this.isLoading = false
       })
-
-
-      // this.sorteoService.getNumero(this.impuesto).subscribe( (resp: any) => {
-
-      //   this.isLoading = true;
-
-      //   if(resp > 0) {
-      //     this.numero = resp;
-      //     this.mensaje = `Tu número de sorteo es ${resp}`;
-      //   }
-      //   else {
-      //     this.mensaje = `No estas participando del sorteo. 
-      //                     Si regularizaste tu tributo con nuestro municipio hasta el 27 de marzo , 
-      //                     volvé a ingresar en las próximas 72hs para obtener tu número de sorteo. 
-      //                     ¡Gracias por participar!`;
-      //   }
-      // }, err => {
-      //   this.mensaje = 'Error en el servidor';
-      // })
-
     }
 
   }
