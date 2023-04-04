@@ -74,7 +74,7 @@ export class AppComponent {
           this.isLoading = false;
         },
         error: err => {
-          this.mensaje = 'Error en el servidor';
+          this.mensaje = 'Porfavor aguarde unos minutos y vuelva a consultar';
           this.isLoading = false;
         }, 
         complete: () => this.isLoading = false
