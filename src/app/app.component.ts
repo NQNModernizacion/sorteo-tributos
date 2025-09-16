@@ -65,10 +65,7 @@ export class AppComponent {
             this.mensaje = `Tu número de sorteo es ${resp}`;
           }
           else {
-            this.mensaje = `No estas participando del sorteo. 
-                            Si regularizaste tu tributo con nuestro municipio hasta el 27 de marzo , 
-                            volvé a ingresar en las próximas horas para obtener tu número de sorteo. 
-                            ¡Gracias por participar!`;
+            this.mensaje = `No estas participando del sorteo. Participan todos los tributos que no poseen deuda al 30 de junio del 2025.`;
           }
 
           this.isLoading = false;
