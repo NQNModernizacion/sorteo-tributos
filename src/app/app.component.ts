@@ -26,6 +26,7 @@ export class AppComponent {
 
   mensaje: string = '';
   numero: number = 0;
+  showMensaje: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
               private sorteoService: SorteoService) {}
@@ -102,21 +103,25 @@ export class AppComponent {
         validator = Validators.maxLength(7);
         this.idImpuestoMaxLength = 7;
         this.idImpuestoPlaceHolder = 'Ejemplo "0000000" (7 números)';
+        this.showMensaje = false;
         break;
       case tipoImp == 'ROD':
         validator = Validators.maxLength(10);
         this.idImpuestoMaxLength = 10;
-        this.idImpuestoPlaceHolder = 'Ejemplo "xx-xxx-xx" (guiones opcionales)';
+        this.idImpuestoPlaceHolder = 'Ejemplo "aa-111-aa" (guiones opcionales)';
+        this.showMensaje = true;
         break;
       case tipoImp == 'CEC':
         validator = Validators.maxLength(10);
         this.idImpuestoMaxLength = 10;
         this.idImpuestoPlaceHolder = 'Ejemplo "00000000-0" (guion opcional)';
+        this.showMensaje = false;
         break;
       case tipoImp == 'COM':
         validator = Validators.maxLength(6);
         this.idImpuestoMaxLength = 6;
         this.idImpuestoPlaceHolder = 'Ejemplo "000000" (6 números)';
+        this.showMensaje = false;
         break;
       
     }

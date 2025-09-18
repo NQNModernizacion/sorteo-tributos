@@ -18,6 +18,7 @@
                     <label for="inputImp">Identificación Del Tributo</label>
                     <input #idImpuesto formControlName="identificacion" [placeholder]="idImpuestoPlaceHolder" [maxlength]="idImpuestoMaxLength" class="form-control"
                         id="inputImp" aria-describedby="emailHelp">
+                    <small *ngIf="showMensaje && !identificacionInvalid" id="emailH" class="text-secondary">Motos antiguas, ejemplo patente: 111aaa deben colocar 2 ceros a la izquierda del número</small>
                     <small *ngIf="identificacionInvalid" id="emailHelp" class="text-danger">La Identificación es obligatoria </small>
                 </div>
                 
